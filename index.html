@@ -1,21 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StartBuild</title>
+  <title>Investment Portfolio Dashboard</title>
 
   <link rel="stylesheet" href="CSS/header.css">
   <link rel="stylesheet" href="CSS/index.css">
-
 </head>
-<body>
 
-  <h1>Coming super soon :)</h1>
-  
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Investment Portfolio</h1>
+        <p>Management System</p>
+      </div>
+
+      <nav class="menu" aria-label="Primary navigation">
+        <button class="menu-item active" data-section="dashboard">
+          <span class="menu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </span>
+          Dashboard
+        </button>
+
+        <button class="menu-item" data-section="add-investment">
+          <span class="menu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 8v8M8 12h8"></path>
+            </svg>
+          </span>
+          Add Investment
+        </button>
+
+        <button class="menu-item" data-section="history">
+          <span class="menu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3v5h5"></path>
+              <path d="M3 8a9 9 0 1 0 2.64-6.36L3 4"></path>
+              <path d="M12 7v5l3 3"></path>
+            </svg>
+          </span>
+          Investment History
+        </button>
+
+        <button class="menu-item" data-section="summary">
+          <span class="menu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"></path>
+              <path d="M2 12h20"></path>
+              <path d="M5 5l14 14"></path>
+            </svg>
+          </span>
+          Portfolio Summary
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="logout-btn">
+          <span class="menu-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <path d="M16 17l5-5-5-5"></path>
+              <path d="M21 12H9"></path>
+            </svg>
+          </span>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="dashboard-content">
+      <header class="page-header">
+        <h2>Dashboard</h2>
+        <p>Welcome back! Here&apos;s an overview of your portfolio</p>
+      </header>
+
+      <section class="stats-grid" aria-label="Portfolio overview stats">
+        <article class="stat-card">
+          <div>
+            <p class="stat-label">Total Investment</p>
+            <p class="stat-value" data-currency="true" data-target="145000">&#8377;145,000</p>
+          </div>
+          <span class="stat-icon icon-blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+              <path d="M3 10h18"></path>
+            </svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div>
+            <p class="stat-label">Current Value</p>
+            <p class="stat-value" data-currency="true" data-target="151000">&#8377;151,000</p>
+          </div>
+          <span class="stat-icon icon-green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6h-5"></path>
+              <path d="M18 6v5"></path>
+              <path d="M18 6L7 17"></path>
+            </svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div>
+            <p class="stat-label">Profit/Loss</p>
+            <p class="stat-value" data-currency="true" data-target="6000">&#8377;6,000</p>
+            <p class="stat-change">&#8593; 4.14%</p>
+          </div>
+          <span class="stat-icon icon-mint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1v22"></path>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7"></path>
+            </svg>
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div>
+            <p class="stat-label">Total Investments</p>
+            <p class="stat-value" data-target="4">4</p>
+          </div>
+          <span class="stat-icon icon-purple" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12h4l2-8 4 16 2-8h6"></path>
+            </svg>
+          </span>
+        </article>
+      </section>
+
+      <section class="investments-table-wrap" aria-label="Recent investments">
+        <h3>Recent Investments</h3>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Investment Name</th>
+                <th>Type</th>
+                <th>Investment Amount</th>
+                <th>Current Value</th>
+                <th>Profit/Loss</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HDFC Equity Fund</td>
+                <td><span class="badge badge-fund">Mutual Fund</span></td>
+                <td>&#8377;50,000</td>
+                <td>&#8377;52,500</td>
+                <td class="positive">+&#8377;2,500 (5.00%)</td>
+                <td>2/28/2026</td>
+              </tr>
+              <tr>
+                <td>Reliance Industries</td>
+                <td><span class="badge badge-stock">Stock</span></td>
+                <td>&#8377;30,000</td>
+                <td>&#8377;31,200</td>
+                <td class="positive">+&#8377;1,200 (4.00%)</td>
+                <td>2/25/2026</td>
+              </tr>
+              <tr>
+                <td>SBI Blue Chip Fund</td>
+                <td><span class="badge badge-fund">Mutual Fund</span></td>
+                <td>&#8377;40,000</td>
+                <td>&#8377;41,500</td>
+                <td class="positive">+&#8377;1,500 (3.75%)</td>
+                <td>2/20/2026</td>
+              </tr>
+              <tr>
+                <td>TCS</td>
+                <td><span class="badge badge-stock">Stock</span></td>
+                <td>&#8377;25,000</td>
+                <td>&#8377;26,800</td>
+                <td class="positive">+&#8377;1,800 (7.20%)</td>
+                <td>2/15/2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
   <script src="JS/index.js"></script>
 </body>
-<footer>
-  © 2026 StartBuild. All rights reserved.
-</footer>
 </html>
