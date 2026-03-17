@@ -1,0 +1,46 @@
+/* Page-specific polish layered on top of Tailwind utility classes */
+:root {
+    --primary: #2563eb;
+    --secondary: #1e293b;
+    --background: #f8fafc;
+    --card: #ffffff;
+    --accent: #22c55e;
+    --border: #e2e8f0;
+}
+
+html,
+body {
+    background: var(--background);
+}
+
+input::placeholder,
+select::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--secondary);
+    box-shadow: 0 0 0 1000px #ffffff inset;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Add Investment | Investment Portfolio</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="CSS/addInvestment.css" />
+
+	<script src="JS/addInvestment.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-page text-secondary antialiased">
+	<div class="min-h-screen md:flex">
+		<aside class="w-full border-b border-borderline bg-card md:w-72 md:border-b-0 md:border-r">
+			<div class="px-6 py-6">
+				<h1 class="text-2xl font-extrabold tracking-tight text-primary">Investment Portfolio</h1>
+				<p class="mt-1 text-sm font-medium text-slate-500">Management System</p>
+			</div>
+
+			<nav class="px-3 pb-3">
+				<ul class="grid grid-cols-2 gap-2 md:grid-cols-1">
+					<li>
+						<a href="index.html" class="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-semibold text-slate-600 transition-all duration-200 ease-out hover:bg-slate-50 hover:text-secondary md:rounded-r-xl">
+							<svg class="h-5 w-5 text-slate-400 transition-colors duration-200 group-hover:text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+								<rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+								<rect x="14" y="3" width="7" height="4" rx="1.5"></rect>
+								<rect x="14" y="10" width="7" height="11" rx="1.5"></rect>
+								<rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+							</svg>
+							Dashboard
+						</a>
+					</li>
+					<li>
+						<a href="addInvestment.html" class="group flex items-center gap-3 rounded-xl border border-primary/20 border-l-4 border-l-primary bg-primary/10 px-3 py-3 text-sm font-semibold text-primary transition-all duration-200 ease-out md:rounded-r-xl">
+							<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+								<circle cx="12" cy="12" r="9"></circle>
+								<path d="M12 8v8M8 12h8"></path>
+							</svg>
+							Add Investment
+						</a>
+					</li>
+					<li>
+						<a href="#" class="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-semibold text-slate-600 transition-all duration-200 ease-out hover:bg-slate-50 hover:text-secondary md:rounded-r-xl">
+							<svg class="h-5 w-5 text-slate-400 transition-colors duration-200 group-hover:text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M3 4h18"></path>
+								<path d="M3 12h12"></path>
+								<path d="M3 20h18"></path>
+								<circle cx="17" cy="12" r="4"></circle>
+							</svg>
+							Investment History
+						</a>
+					</li>
+					<li>
+						<a href="#" class="group flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-semibold text-slate-600 transition-all duration-200 ease-out hover:bg-slate-50 hover:text-secondary md:rounded-r-xl">
+							<svg class="h-5 w-5 text-slate-400 transition-colors duration-200 group-hover:text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M4 19h16"></path>
+								<path d="M7 16V9"></path>
+								<path d="M12 16V5"></path>
+								<path d="M17 16v-4"></path>
+							</svg>
+							Portfolio Summary
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="hidden px-4 pb-6 md:block">
+				<button id="logoutBtn" type="button" class="inline-flex items-center gap-2 rounded-xl border border-borderline px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-200 ease-out hover:bg-slate-50 hover:text-secondary">
+					<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+						<path d="M16 17l5-5-5-5"></path>
+						<path d="M21 12H9"></path>
+					</svg>
+					Logout
+				</button>
+			</div>
+		</aside>
+
+		<main class="flex-1 px-4 py-8 sm:px-6 md:px-10 lg:px-14">
+			<div class="mx-auto w-full max-w-3xl">
+				<a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition-colors duration-200 ease-out hover:text-primary">
+					<svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M15 18l-6-6 6-6"></path>
+					</svg>
+					Back to Dashboard
+				</a>
+
+				<header class="mt-4">
+					<h2 class="text-3xl font-extrabold tracking-tight text-secondary sm:text-4xl">Add Investment</h2>
+					<p class="mt-2 text-sm font-medium text-slate-500 sm:text-base">Add a new stock or mutual fund investment to your portfolio.</p>
+				</header>
+
+				<section class="mt-8 flex justify-center">
+					<div class="w-full max-w-xl rounded-2xl border border-borderline bg-card p-5 shadow-soft sm:p-7">
+						<form id="addInvestmentForm" class="space-y-5" novalidate>
+							<div>
+								<label for="investmentType" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Investment Type</label>
+								<select id="investmentType" name="investmentType" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15">
+									<option>Stock</option>
+									<option>Mutual Fund</option>
+									<option>ETF</option>
+									<option>Bonds</option>
+								</select>
+							</div>
+
+							<div>
+								<label for="investmentName" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Investment Name</label>
+								<input id="investmentName" name="investmentName" type="text" placeholder="e.g. Reliance Industries, HDFC Equity Fund" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary placeholder:font-medium placeholder:text-slate-400 outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15" />
+							</div>
+
+							<div>
+								<label for="investedAmount" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Total Amount Invested (INR)</label>
+								<input id="investedAmount" name="investedAmount" type="number" placeholder="50000" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary placeholder:font-medium placeholder:text-slate-400 outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15" />
+							</div>
+
+							<div class="grid gap-4 sm:grid-cols-2">
+								<div>
+									<label for="purchasePrice" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Purchase Price (INR)</label>
+									<input id="purchasePrice" name="purchasePrice" type="number" placeholder="2500" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary placeholder:font-medium placeholder:text-slate-400 outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15" />
+								</div>
+								<div>
+									<label for="quantity" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quantity / Units</label>
+									<input id="quantity" name="quantity" type="number" placeholder="20" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary placeholder:font-medium placeholder:text-slate-400 outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15" />
+								</div>
+							</div>
+
+							<div>
+								<label for="purchaseDate" class="mb-2 block text-xs font-semibold uppercase tracking-wide text-slate-500">Purchase Date</label>
+								<input id="purchaseDate" name="purchaseDate" type="text" placeholder="dd-mm-yyyy" class="h-12 w-full rounded-xl border border-borderline bg-white px-4 text-sm font-medium text-secondary placeholder:font-medium placeholder:text-slate-400 outline-none transition-all duration-200 ease-out focus:border-primary focus:ring-4 focus:ring-primary/15" />
+							</div>
+
+							<div class="pt-2 sm:flex sm:items-center sm:gap-3">
+								<button type="submit" class="inline-flex h-12 w-full items-center justify-center rounded-xl bg-primary px-6 text-sm font-bold text-white shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:translate-y-0 sm:flex-1">
+									Add Investment
+								</button>
+								<button id="cancelBtn" type="button" class="mt-3 inline-flex h-12 w-full items-center justify-center rounded-xl border border-borderline bg-white px-6 text-sm font-semibold text-slate-600 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:text-secondary active:translate-y-0 sm:mt-0 sm:w-auto">
+									Cancel
+								</button>
+							</div>
+
+							<p id="formMessage" class="hidden rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700" role="status" aria-live="polite"></p>
+
+							<p class="inline-flex items-center gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700">
+								<span class="h-2 w-2 rounded-full bg-accent"></span>
+								Tip: Verify price and units before adding your order.
+							</p>
+						</form>
+					</div>
+				</section>
+			</div>
+		</main>
+	</div>
+</body>
+</html>
