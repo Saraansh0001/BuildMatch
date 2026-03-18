@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#2563EB",
-        'primary-light': "#DBEAFE",
-        'primary-lighter': "#EFF6FF",
-        secondary: "#1E293B",
-        'secondary-light': "#64748B",
+        primary: "#4F46E5",
+        secondary: "#22C55E",
+        accent: "#06B6D4",
         page: "#F8FAFC",
         card: "#FFFFFF",
+        'text-primary': "#0F172A",
+        'text-secondary': "#64748B",
         borderline: "#E2E8F0",
       },
       animation: {
@@ -35,7 +35,11 @@ export default {
           '50%': { opacity: '0.8' },
         },
       },
+      boxShadow: {
+        'soft': '0 10px 30px rgba(0, 0, 0, 0.08)',
+      },
     },
   },
   plugins: [],
 }
+
