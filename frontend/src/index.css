@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #f0f4ff;
+    --color-surface: #ffffff;
+    --color-border: #e2e8f0;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+    --color-accent: #3b82f6;
+    --color-accent-hover: #2563eb;
+  }
+  .dark {
+    --color-bg: #0b0f1a;
+    --color-surface: #111827;
+    --color-border: #1e293b;
+    --color-text: #f1f5f9;
+    --color-muted: #94a3b8;
+    --color-accent: #3b82f6;
+    --color-accent-hover: #2563eb;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    @apply bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-600/50 rounded-full; }
+}
+
+@layer components {
+  .card {
+    @apply bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-sm;
+  }
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl px-5 py-2.5 transition-all duration-200 active:scale-95;
+  }
+  .btn-secondary {
+    @apply bg-[var(--color-border)] hover:bg-slate-300 dark:hover:bg-slate-700 text-[var(--color-text)] font-medium rounded-xl px-5 py-2.5 transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text)] rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all;
+  }
+  .badge-buy {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400;
+  }
+  .badge-sell {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/15 text-rose-400;
+  }
+  .table-row {
+    @apply border-b border-[var(--color-border)] hover:bg-indigo-500/5 transition-colors duration-150;
+  }
+}
