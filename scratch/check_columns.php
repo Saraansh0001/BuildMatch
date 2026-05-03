@@ -1,5 +1,5 @@
 <?php
-// scratch/check_columns.php
+
 require_once __DIR__ . '/../backend/config/db.php';
 
 $sql = "DESCRIBE assets";

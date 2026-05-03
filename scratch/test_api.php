@@ -1,5 +1,5 @@
 <?php
-// scratch/test_api.php
+
 require_once __DIR__ . '/../backend/config/db.php';
 
 $typeFilter = 'Stock';

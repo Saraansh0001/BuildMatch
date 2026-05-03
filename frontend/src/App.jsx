@@ -11,6 +11,7 @@ import StockInventory from './pages/StockInventory';
 import MutualFundInventory from './pages/MutualFundInventory';
 import TransactionHistory from './pages/TransactionHistory';
 import Profile from './pages/Profile';
+import Insights from './pages/Insights';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { useState } from 'react';
@@ -20,6 +21,7 @@ const PAGE_TITLES = {
   '/stocks':       'Stock Inventory',
   '/mutual-funds': 'Mutual Funds',
   '/history':      'Transaction History',
+  '/insights':     'Insights',
   '/profile':      'My Profile',
 };
 
@@ -57,6 +59,7 @@ function Layout() {
             <Route path="/stocks"       element={<StockInventory />} />
             <Route path="/mutual-funds" element={<MutualFundInventory />} />
             <Route path="/history"      element={<TransactionHistory />} />
+            <Route path="/insights"     element={<Insights />} />
             <Route path="/profile"      element={<Profile />} />
           </Routes>
         </main>

@@ -71,7 +71,7 @@ export default function Register() {
             <label className="block text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider mb-1.5 ml-1">Full Name</label>
             <input
               type="text"
-              placeholder="John Doe"
+              placeholder="Saraansh"
               value={name}
               onChange={e => setName(e.target.value)}
               className="input-field"

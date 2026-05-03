@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
-  LayoutDashboard, TrendingUp, BarChart3, Clock, User, Wallet, X, LogOut
+  LayoutDashboard, TrendingUp, BarChart3, Clock, User, Wallet, X, LogOut, Lightbulb
 } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 
@@ -11,6 +11,7 @@ const NAV = [
   { to: '/stocks',       label: 'Stocks',       icon: TrendingUp },
   { to: '/mutual-funds', label: 'Mutual Funds', icon: BarChart3 },
   { to: '/history',      label: 'Transactions', icon: Clock },
+  { to: '/insights',     label: 'Insights',     icon: Lightbulb },
   { to: '/profile',      label: 'Profile',      icon: User },
 ];
 
