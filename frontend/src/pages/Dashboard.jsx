@@ -73,16 +73,16 @@ export default function Dashboard() {
         <StatCard icon={Wallet}     label="Total Portfolio Value" value={fmt(totalVal)}      color="indigo" />
         <StatCard icon={TrendingUp} label="Net Invested"          value={fmt(totalInvested - totalSold)} color="emerald" />
         <StatCard
-          icon={pnl >= 0 ? TrendingUp : TrendingDown}
+          icon={TrendingUp}
           label="P&amp;L"
-          value={(pnl >= 0 ? '+' : '') + fmt(pnl)}
-          color={pnl >= 0 ? 'emerald' : 'rose'}
+          value="Coming Soon"
+          color="indigo"
         />
         <StatCard
           icon={BarChart3}
           label="P&amp;L %"
-          value={`${pnlPct >= 0 ? '+' : ''}${pnlPct.toFixed(2)}%`}
-          color={pnlPct >= 0 ? 'emerald' : 'rose'}
+          value="Coming Soon"
+          color="indigo"
         />
       </div>
 
