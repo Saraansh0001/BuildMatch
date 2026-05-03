@@ -4,18 +4,18 @@ import { X, TrendingUp, TrendingDown, Loader2, Search, Check } from 'lucide-reac
 import { getAssets, addTransaction } from '../services/api';
 
 export default function TransactionModal({ open, onClose, onSuccess, defaultType = 'Stock' }) {
-  const [assets, setAssets]         = useState([]);
-  const [loading, setLoading]       = useState(false);
+  const [assets, setAssets] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError]           = useState('');
-  const [txType, setTxType]         = useState('BUY');
+  const [error, setError] = useState('');
+  const [txType, setTxType] = useState('BUY');
 
   // Combobox state
-  const [query, setQuery]           = useState('');
-  const [dropOpen, setDropOpen]     = useState(false);
+  const [query, setQuery] = useState('');
+  const [dropOpen, setDropOpen] = useState(false);
   const [selectedAsset, setSelectedAsset] = useState(null);
 
-  const [quantity, setQuantity]         = useState('');
+  const [quantity, setQuantity] = useState('');
   const [pricePerUnit, setPricePerUnit] = useState('');
   const comboRef = useRef(null);
 
@@ -26,7 +26,7 @@ export default function TransactionModal({ open, onClose, onSuccess, defaultType
     setQuery(''); setSelectedAsset(null); setDropOpen(false);
     setQuantity(''); setPricePerUnit('');
     setTxType('BUY');
-    getAssets(defaultType)
+    getAssets(defaultType === 'Stock' ? 'stock' : 'mutual_fund')
       .then(r => setAssets(r.data.assets || []))
       .catch(() => setError('Failed to load assets.'))
       .finally(() => setLoading(false));
@@ -56,11 +56,14 @@ export default function TransactionModal({ open, onClose, onSuccess, defaultType
     if (!selectedAsset) { setError('Please select an asset.'); return; }
     setError(''); setSubmitting(true);
     try {
+      const isStock = defaultType === 'Stock';
       await addTransaction({
-        asset_id:         selectedAsset.id,
+        asset_type: isStock ? 'stock' : 'mutual_fund',
+        stock_id: isStock ? selectedAsset.id : undefined,
+        mf_id: !isStock ? selectedAsset.id : undefined,
         transaction_type: txType,
-        quantity:         parseFloat(quantity),
-        price_per_unit:   parseFloat(pricePerUnit),
+        quantity: parseFloat(quantity),
+        price: parseFloat(pricePerUnit),
       });
       onSuccess();
       onClose();
@@ -92,11 +95,10 @@ export default function TransactionModal({ open, onClose, onSuccess, defaultType
             {['BUY', 'SELL'].map(t => (
               <button
                 key={t} type="button" onClick={() => setTxType(t)}
-                className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold transition-colors duration-150 ${
-                  txType === t
-                    ? t === 'BUY' ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'
-                    : 'text-[var(--color-muted)]'
-                }`}
+                className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold transition-colors duration-150 ${txType === t
+                  ? t === 'BUY' ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'
+                  : 'text-[var(--color-muted)]'
+                  }`}
               >
                 {t === 'BUY' ? <TrendingUp size={14} /> : <TrendingDown size={14} />} {t}
               </button>

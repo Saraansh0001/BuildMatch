@@ -9,12 +9,11 @@ import { useToast } from '../context/ToastContext';
 const fmt = (n) => '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 2 });
 
 const COLS = [
-  { key: 'symbol',            label: 'Symbol',    align: 'left'  },
-  { key: 'net_quantity',      label: 'Qty',        align: 'right' },
-  { key: 'average_buy_price', label: 'Avg Buy',    align: 'right' },
-  { key: 'current_price',     label: 'Price',      align: 'right' },
-  { key: 'current_value',     label: 'Value',      align: 'right' },
-  { key: 'gain_pct',          label: 'Gain %',     align: 'right' },
+  { key: 'symbol',        label: 'Symbol',  align: 'left'  },
+  { key: 'quantity',      label: 'Qty',     align: 'right' },
+  { key: 'average_price', label: 'Avg Buy', align: 'right' },
+  { key: 'current_price', label: 'Price',   align: 'right' },
+  { key: 'current_value', label: 'Value',   align: 'right' },
 ];
 
 export default function HoldingsTable({ type }) {
@@ -53,7 +52,7 @@ export default function HoldingsTable({ type }) {
   const filtered = rows
     .filter(r =>
       r.symbol.toLowerCase().includes(search.toLowerCase()) ||
-      r.asset_name.toLowerCase().includes(search.toLowerCase())
+      (r.stock_name || r.mf_name || '').toLowerCase().includes(search.toLowerCase())
     )
     .sort((a, b) => {
       const va = a[sortKey], vb = b[sortKey];
@@ -127,9 +126,9 @@ export default function HoldingsTable({ type }) {
                     </td>
                   </tr>
                 ) : filtered.map(row => (
-                  <React.Fragment key={row.asset_id}>
+                  <React.Fragment key={row.stock_id || row.mf_id}>
                     <tr
-                      key={row.asset_id}
+                      key={row.stock_id || row.mf_id}
                       onClick={() => toggleExpand(row.symbol)}
                       className="table-row cursor-pointer"
                     >
@@ -143,28 +142,22 @@ export default function HoldingsTable({ type }) {
                           </div>
                           <div>
                             <p className="font-semibold">{row.symbol}</p>
-                            <p className="text-xs text-[var(--color-muted)] truncate max-w-[130px]">{row.asset_name}</p>
+                            <p className="text-xs text-[var(--color-muted)] truncate max-w-[130px]">{row.stock_name || row.mf_name}</p>
                           </div>
                         </div>
                       </td>
-                      <td className="px-4 py-3.5 text-right font-mono">{Number(row.net_quantity).toLocaleString()}</td>
-                      <td className="px-4 py-3.5 text-right font-mono">{fmt(row.average_buy_price)}</td>
+                      <td className="px-4 py-3.5 text-right font-mono">{Number(row.quantity).toLocaleString()}</td>
+                      <td className="px-4 py-3.5 text-right font-mono">{fmt(row.average_price ?? row.average_nav ?? 0)}</td>
                       <td className="px-4 py-3.5 text-right font-mono">{fmt(row.current_price)}</td>
                       <td className="px-4 py-3.5 text-right font-mono font-semibold">{fmt(row.current_value)}</td>
-                      <td className="px-4 py-3.5 text-right">
-                        <span className={`inline-flex items-center gap-1 text-xs font-semibold ${row.gain_pct >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                          {row.gain_pct >= 0 ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
-                          {row.gain_pct >= 0 ? '+' : ''}{row.gain_pct.toFixed(2)}%
-                        </span>
-                      </td>
                     </tr>
                     {expanded === row.symbol && (
-                      <tr key={`${row.asset_id}-exp`}>
+                      <tr key={`${row.stock_id || row.mf_id}-exp`}>
                         <td colSpan={7} className="bg-[var(--color-bg)] px-8 py-4 border-b border-[var(--color-border)]">
                           {expandLoading && !expandData[row.symbol] ? (
                             <Skeleton count={2} />
                           ) : (
-                            <React.Fragment key={row.asset_id}>
+                            <React.Fragment key={row.stock_id || row.mf_id}>
                               <p className="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wide mb-3">
                                 Recent transactions — {row.symbol}
                               </p>

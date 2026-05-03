@@ -22,10 +22,10 @@ if (strlen($password) < 6) {
 
 try {
     // Check for duplicate email or name
-    $check = $pdo->prepare("SELECT user_id FROM users WHERE email = :email OR name = :name LIMIT 1");
-    $check->execute([':email' => $email, ':name' => $name]);
+    $check = $pdo->prepare("SELECT user_id FROM users WHERE email = :email LIMIT 1");
+    $check->execute([':email' => $email]);
     if ($check->fetch()) {
-        json_response(['error' => 'Email or name already in use.'], 409);
+        json_response(['error' => 'Email already in use.'], 409);
     }
 
     $hash = password_hash($password, PASSWORD_BCRYPT);

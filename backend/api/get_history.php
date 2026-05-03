@@ -21,8 +21,10 @@ try {
     // Both branches filter on user_id. Type and search filters are added inline.
     $typeClause   = ($typeFilter && in_array($typeFilter, ['BUY', 'SELL']))
                     ? "AND transaction_type = :type" : "";
-    $searchClause = $search
-                    ? "AND (symbol LIKE :search OR asset_name LIKE :search2)" : "";
+    $stockSearchClause = $search
+                        ? "AND (s.symbol LIKE :search OR s.stock_name LIKE :search2)" : "";
+    $mfSearchClause    = $search
+                        ? "AND (mf.symbol LIKE :search OR mf.mf_name LIKE :search2)" : "";
 
     // asset_type filter: 'Stock' or 'Mutual Fund' (values used in UNION label)
     $stockBranchEnabled = true;
@@ -30,7 +32,8 @@ try {
     if ($assetType === 'Stock')       $mfBranchEnabled    = false;
     if ($assetType === 'Mutual Fund') $stockBranchEnabled = false;
 
-    $params = [':uid' => $userId, ':uid2' => $userId];
+    $params = [':uid' => $userId];
+    if ($mfBranchEnabled) $params[':uid2'] = $userId;
     if ($typeFilter && in_array($typeFilter, ['BUY', 'SELL'])) {
         $params[':type'] = $typeFilter;
     }
@@ -58,7 +61,7 @@ try {
             JOIN stocks s ON s.stock_id = st.stock_id
             WHERE st.user_id = :uid
               $typeClause
-              $searchClause
+              $stockSearchClause
         ";
     }
 
@@ -78,7 +81,7 @@ try {
             JOIN mutual_funds mf ON mf.mf_id = mft.mf_id
             WHERE mft.user_id = :uid2
               $typeClause
-              $searchClause
+              $mfSearchClause
         ";
     }
 

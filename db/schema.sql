@@ -131,3 +131,40 @@ INSERT INTO `mutual_funds` (`symbol`, `mf_name`, `fund_house`, `category`, `nav`
 -- =========================================================
 INSERT INTO `users` (`user_id`, `name`, `email`, `password_hash`) VALUES
 (1, 'Demo Investor', 'demo@foliovault.app', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+
+-- =========================================================
+-- SEED DATA — Stock Transactions (demo user)
+-- =========================================================
+INSERT INTO `stock_transactions` (`user_id`, `stock_id`, `transaction_type`, `quantity`, `price`, `transaction_date`) VALUES
+(1, 1, 'BUY',  10, 2750.00, '2024-01-10 10:00:00'),
+(1, 2, 'BUY',   5, 3800.00, '2024-01-15 11:30:00'),
+(1, 3, 'BUY',  20, 1420.00, '2024-02-01 09:15:00'),
+(1, 4, 'BUY',  15, 1400.00, '2024-02-20 14:00:00'),
+(1, 5, 'BUY', 100,  400.00, '2024-03-05 10:45:00'),
+(1, 3, 'SELL',  5, 1500.00, '2024-04-10 13:00:00');
+
+-- =========================================================
+-- SEED DATA — holds_stock cache (demo user)
+-- =========================================================
+INSERT INTO `holds_stock` (`user_id`, `stock_id`, `quantity`, `average_price`) VALUES
+(1, 1, 10,   2750.00),
+(1, 2,  5,   3800.00),
+(1, 3, 15,   1420.00),
+(1, 4, 15,   1400.00),
+(1, 5, 100,   400.00);
+
+-- =========================================================
+-- SEED DATA — MF Transactions (demo user)
+-- =========================================================
+INSERT INTO `mf_transactions` (`user_id`, `mf_id`, `transaction_type`, `quantity`, `average_nav`, `transaction_date`) VALUES
+(1, 1, 'BUY', 200, 60.2500, '2024-01-20 10:00:00'),
+(1, 2, 'BUY', 150, 47.5000, '2024-02-10 11:00:00'),
+(1, 3, 'BUY',  50, 130.000, '2024-03-15 09:30:00');
+
+-- =========================================================
+-- SEED DATA — mf_holdings cache (demo user)
+-- =========================================================
+INSERT INTO `mf_holdings` (`user_id`, `mf_id`, `quantity`, `average_nav`) VALUES
+(1, 1, 200, 60.2500),
+(1, 2, 150, 47.5000),
+(1, 3,  50, 130.000);
